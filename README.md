@@ -35,15 +35,19 @@
     ```bash
     cd social_network
 
-2. Start the application:
+2. Apply Django migrations:
+    ```bash
+    py manage.py migrate
+
+3. Start the application:
     ```bash
     py manage.py runserver
 
-3. Run unit tests:
+4. Run unit tests:
     ```bash
     py manage.py test
 
-4. Postman Collection: 
+5. Postman Collection: 
 In the root directory of the project, you can find a Postman collection file. This collection includes all the endpoints of the application along with some example responses. You can import this collection into Postman to explore and test the API. The Postman collection file is named djando_social_network.postman_collection.json. To import it:
     - Open Postman.
     - Click on the "Import" button.
