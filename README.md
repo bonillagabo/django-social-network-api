@@ -62,7 +62,18 @@ Replace "user" and "pass" with the credentials of a registered user. You can reg
 
 ## API Endpoints
 
-### Obtain Token:
+- [Obtain Token](#obtain-token)
+- [Create User](#create-user)
+- [Get All Users](#get-all-users)
+- [Get One User by ID](#get-one-user-by-id)
+- [Follow a User](#follow-a-user)
+- [Create a Post](#create-a-post)
+- [Get All Posts](#get-all-posts)
+- [Get One Post by ID](#get-one-post-by-id)
+- [Create a Post Comment](#create-a-post-comment)
+- [Get All Post Comments](#get-all-post-comments)
+
+### Obtain Token
 - **Endpoint:** `api/token/`
 - **Method:** POST
 - **Description:** Obtains a Bearer token for authentication.
@@ -73,7 +84,7 @@ Replace "user" and "pass" with the credentials of a registered user. You can reg
         "password": "pass"
     }
 
-### Create User:
+### Create User
 - **Endpoint:** `api/users/`
 - **Method:** POST
 - **Description:** : Create a new user.
@@ -87,7 +98,7 @@ Replace "user" and "pass" with the credentials of a registered user. You can reg
         "password": "password123"
     }
 
-### Get all users:
+### Get All Users
 - **Endpoint:** `api/users/`
 - **Method:** GET
 - **Description:** Retrieve a list of all users.
@@ -96,7 +107,7 @@ Replace "user" and "pass" with the credentials of a registered user. You can reg
   - `page_size` (optional): The number of users per page.
 - **Request Header:** `Authorization: Bearer your_token_here`
 
-### Get one user by id:
+### Get One User by ID
 - **Endpoint:** `api/users/{id}/`
 - **Method:** GET
 - **Description:** : Retrieve details of a specific user. Including number of total posts, number of total comments, followers and following.
@@ -104,7 +115,7 @@ Replace "user" and "pass" with the credentials of a registered user. You can reg
   - `id` (required): The unique identifier of the user to retrieve.
 - **Request Header:** `Authorization: Bearer your_token_here`
 
-### Follow a user:
+### Follow a User
 - **Endpoint:** `api/users/{follower_id}/follow/{followee_id}/`
 - **Method:** POST
 - **Description:** Sets the user with `follower_id` as a follower of the user with `followee_id`.
@@ -113,7 +124,7 @@ Replace "user" and "pass" with the credentials of a registered user. You can reg
   - `followee_id` (required): The ID of the user being followed.
 - **Request Header:** `Authorization: Bearer your_token_here`
 
-### Create a post:
+### Create a Post
 - **Endpoint:** `api/posts/`
 - **Method:** POST
 - **Description:** Create a new post.
@@ -125,7 +136,7 @@ Replace "user" and "pass" with the credentials of a registered user. You can reg
     }
 - **Request Header:** `Authorization: Bearer your_token_here`
 
-### Get all posts:
+### Get All Posts
 - **Endpoint:** `api/posts/`
 - **Method:** GET
 - **Description:** Retrieve a list of all posts ordered from newest to oldest from all users,
@@ -138,7 +149,7 @@ with pagination and filters.
   - `to_date` (optional): Filter posts created up to this date (format: YYYY-MM-DD).
 - **Request Header:** `Authorization: Bearer your_token_here`
 
-### Get one post by id:
+### Get One Post by ID
 - **Endpoint:** `api/posts/{id}/`
 - **Method:** GET
 - **Description:**  Retrieve details of a specific post with it's last three comments
@@ -147,7 +158,7 @@ included and the information of it's creator.
   - `id` (required): The ID of the post to retrieve.
 - **Request Header:** `Authorization: Bearer your_token_here`
 
-### Create a post comment:
+### Create a Post Comment
 - **Endpoint:** `api/posts/{id}/comments/`
 - **Method:** POST
 - **Description:** Add a new comment to a post.
@@ -161,7 +172,7 @@ included and the information of it's creator.
     }
 - **Request Header:** `Authorization: Bearer your_token_here`
 
-### Get all post comments:
+### Get All Post Comments
 - **Endpoint:** `api/posts/{id}/comments/`
 - **Method:** GET
 - **Description:** Retrieve all comments for a specific post.
