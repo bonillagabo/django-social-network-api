@@ -13,7 +13,7 @@
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/bonillagabo/django-social-network-api.git
+   git clone git@github.com:bonillagabo/django-social-network-api.git
 
 2. Navigate to the cloned repository:
     ```bash
