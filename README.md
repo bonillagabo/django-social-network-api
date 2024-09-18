@@ -1,5 +1,14 @@
 # django-social-network-api
 
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Authentication](#authentication)
+- [API Endpoints](#api-endpoints)
+- [Notes](#notes)
+  - [Optimizations Applied to ORM Queries](#optimizations-applied-to-orm-queries)
+  - [Challenges Faced](#challenges-faced)
+
 ## Installation
 
 1. Clone this repository:
@@ -183,3 +192,19 @@ included and the information of it's creator.
 - **Path Parameter:**
   - `id` (required): The ID of the post for which to retrieve comments.
 - **Request Header:** `Authorization: Bearer your_token_here`
+
+## Notes
+
+### Optimizations Applied to ORM Queries
+
+1. **Pagination**: Implementing pagination improves performance by limiting the number of results returned in a single query. This prevents the application from loading large volumes of data at once, which could lead to excessive memory usage and slower response times. Pagination also enhances user experience by displaying data in manageable chunks.
+
+2. **`select_related()` and `prefetch_related()`**: These methods were used to optimize database access and reduce the number of queries.
+   - **`select_related()`**: This method is used for single-valued relationships (such as ForeignKey or OneToOne) and performs a SQL join to retrieve related objects in a single query, minimizing the need for additional database hits.
+   - **`prefetch_related()`**: This method is used for multi-valued relationships (such as ManyToMany or reverse ForeignKey) and performs separate queries for related data, combining the results in Python. This approach helps avoid the "N+1 query problem," where multiple queries are issued for related objects.
+
+3. **`get_object_or_404()`**: This method simplifies error handling by returning a 404 response if the object is not found, rather than causing an unhandled exception. This approach contributes to cleaner and more reliable error management in views.
+
+### Challenges Faced
+
+Applying `select_related()` and `prefetch_related()` effectively required careful consideration of data relationships. Incorrect usage could lead to inefficient queries or excessive data retrieval. Balancing the trade-offs between query complexity and performance was crucial.
