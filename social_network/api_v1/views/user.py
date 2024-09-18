@@ -1,5 +1,6 @@
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from ..utils.custom_paginator import CustomPageNumberPagination
 from ..models.user import User
@@ -9,21 +10,35 @@ from django.shortcuts import get_object_or_404
 
 
 @api_view(["GET", "POST"])
-def user_list(request):
+@permission_classes([AllowAny])
+def users_endpoint_handler(request):
     if request.method == "GET":
-        paginator = CustomPageNumberPagination()
-        users = User.objects.all().order_by("id")
-        paginated_users = paginator.paginate_queryset(users, request)
-        serializer = UserListSerializer(paginated_users, many=True)
-        return paginator.get_paginated_response(serializer.data)
+        return get_users(request)
     elif request.method == "POST":
-        serializer = UserDetailSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(
-                {"message": "User created successfully"}, status=status.HTTP_201_CREATED
-            )
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return create_user(request)
+
+
+def get_users(request):
+    if not request.user.is_authenticated:
+        return Response(
+            {"detail": "Authentication credentials were not provided."},
+            status=status.HTTP_401_UNAUTHORIZED,
+        )
+    paginator = CustomPageNumberPagination()
+    users = User.objects.all().order_by("id")
+    paginated_users = paginator.paginate_queryset(users, request)
+    serializer = UserListSerializer(paginated_users, many=True)
+    return paginator.get_paginated_response(serializer.data)
+
+
+def create_user(request):
+    serializer = UserDetailSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(
+            {"message": "User created successfully"}, status=status.HTTP_201_CREATED
+        )
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["GET"])

@@ -29,6 +29,7 @@ DEBUG = config["DEBUG"]
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'api_v1.User'
 
 # Application definition
 
