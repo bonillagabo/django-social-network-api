@@ -6,6 +6,8 @@ from ..serializers.user_list import UserListSerializer
 class UserDetailSerializer(serializers.ModelSerializer):
     """Serializer para mostrar el detalle completo de un usuario"""
 
+    comments_count = serializers.IntegerField(source="comments.count", read_only=True)
+    posts_count = serializers.IntegerField(source="posts.count", read_only=True)
     followers_count = serializers.IntegerField(source="followers.count", read_only=True)
     following_count = serializers.IntegerField(source="following.count", read_only=True)
     following = serializers.SerializerMethodField()
@@ -21,6 +23,8 @@ class UserDetailSerializer(serializers.ModelSerializer):
             "name",
             "lastname",
             "password",
+            "comments_count",
+            "posts_count",
             "followers_count",
             "following_count",
             "following",

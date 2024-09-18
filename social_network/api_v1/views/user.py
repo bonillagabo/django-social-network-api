@@ -12,7 +12,7 @@ from django.shortcuts import get_object_or_404
 def user_list(request):
     if request.method == "GET":
         paginator = CustomPageNumberPagination()
-        users = User.objects.all()
+        users = User.objects.all().order_by("id")
         paginated_users = paginator.paginate_queryset(users, request)
         serializer = UserListSerializer(paginated_users, many=True)
         return paginator.get_paginated_response(serializer.data)
@@ -27,12 +27,12 @@ def user_list(request):
 
 
 @api_view(["GET"])
-def user_detail(request, pk):
+def user_detail(request, user_id):
     try:
         user = (
             User.objects.select_related()
             .prefetch_related("following", "followers")
-            .get(pk=pk)
+            .get(pk=user_id)
         )
     except User.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)

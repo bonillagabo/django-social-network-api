@@ -12,15 +12,15 @@ class User(AbstractUser):
         "self", symmetrical=False, related_name="followers"
     )
 
-    # Anula los campos 'grupos' y 'permisos_usuario' para evitar conflictos con el modelo built-in 'user' de Django
+    # Anula los campos 'groups' y 'user_permissions' para evitar conflictos con el modelo built-in 'user' de Django
     groups = models.ManyToManyField(
         "auth.Group",
-        related_name="api_v1_user_groups",  
+        related_name="api_v1_user_groups",
         blank=True,
     )
     user_permissions = models.ManyToManyField(
         "auth.Permission",
-        related_name="api_v1_user_permissions",  
+        related_name="api_v1_user_permissions",
         blank=True,
     )
 
