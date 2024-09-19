@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "3b05fd1b-ac49-43e2-a3ac-58f74225143b",
-		"name": "Djando social network",
+		"_postman_id": "98ecb658-ce23-4b31-81f4-6be4413722fd",
+		"name": "djando_social_network",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "27459717"
 	},
@@ -230,7 +230,7 @@
 							"header": [
 								{
 									"key": "Date",
-									"value": "Wed, 18 Sep 2024 17:26:18 GMT"
+									"value": "Thu, 19 Sep 2024 11:10:36 GMT"
 								},
 								{
 									"key": "Server",
@@ -246,7 +246,7 @@
 								},
 								{
 									"key": "Allow",
-									"value": "OPTIONS, GET"
+									"value": "GET, OPTIONS"
 								},
 								{
 									"key": "X-Frame-Options",
@@ -254,7 +254,7 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "217"
+									"value": "248"
 								},
 								{
 									"key": "X-Content-Type-Options",
@@ -270,22 +270,13 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": 1,\n    \"username\": \"mari\",\n    \"email\": \"mari@gmail.com\",\n    \"name\": \"Maria\",\n    \"lastname\": \"Castro\",\n    \"comments_count\": 9,\n    \"posts_count\": 3,\n    \"followers_count\": 0,\n    \"following_count\": 1,\n    \"following\": [\n        {\n            \"id\": 2,\n            \"username\": \"gabo\"\n        }\n    ],\n    \"followers\": []\n}"
+							"body": "{\n    \"id\": 1,\n    \"username\": \"gabo\",\n    \"email\": \"gabo@gmail.com\",\n    \"name\": \"Gabriel\",\n    \"lastname\": \"Bonilla\",\n    \"comments_count\": 6,\n    \"posts_count\": 3,\n    \"followers_count\": 1,\n    \"following_count\": 1,\n    \"following\": [\n        {\n            \"id\": 2,\n            \"username\": \"gabo1\"\n        }\n    ],\n    \"followers\": [\n        {\n            \"id\": 2,\n            \"username\": \"gabo1\"\n        }\n    ]\n}"
 						},
 						{
 							"name": "Users by id 404",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": "http://127.0.0.1:8000/api/users/100/"
 							},
 							"status": "Not Found",
@@ -330,7 +321,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				},
@@ -390,15 +381,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "http://127.0.0.1:8000/api/users/?page_number=1&page_size=20",
 									"protocol": "http",
@@ -866,7 +848,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/posts/?page_number=&page_size=&author_id=&from_date=2024-08-10&to_date=2024-09-19",
+									"raw": "http://127.0.0.1:8000/api/posts/?page_number=&page_size=&author_id=&from_date=&to_date=",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -895,11 +877,11 @@
 										},
 										{
 											"key": "from_date",
-											"value": "2024-08-10"
+											"value": ""
 										},
 										{
 											"key": "to_date",
-											"value": "2024-09-19"
+											"value": ""
 										}
 									]
 								}
@@ -910,7 +892,7 @@
 							"header": [
 								{
 									"key": "Date",
-									"value": "Wed, 18 Sep 2024 17:31:25 GMT"
+									"value": "Thu, 19 Sep 2024 11:12:30 GMT"
 								},
 								{
 									"key": "Server",
@@ -926,7 +908,7 @@
 								},
 								{
 									"key": "Allow",
-									"value": "OPTIONS, POST, GET"
+									"value": "POST, GET, OPTIONS"
 								},
 								{
 									"key": "X-Frame-Options",
@@ -934,7 +916,7 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "480"
+									"value": "368"
 								},
 								{
 									"key": "X-Content-Type-Options",
@@ -950,7 +932,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"count\": 5,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 5,\n            \"author\": 1,\n            \"content\": \"quinto post\",\n            \"created_at\": \"2024-09-18T13:59:39.406402Z\"\n        },\n        {\n            \"id\": 4,\n            \"author\": 2,\n            \"content\": \"cuarto post\",\n            \"created_at\": \"2024-09-18T13:59:32.771596Z\"\n        },\n        {\n            \"id\": 2,\n            \"author\": 1,\n            \"content\": \"Segundo post\",\n            \"created_at\": \"2024-09-18T13:21:51.015454Z\"\n        },\n        {\n            \"id\": 1,\n            \"author\": 1,\n            \"content\": \"Primer post\",\n            \"created_at\": \"2024-09-18T13:20:47.331574Z\"\n        },\n        {\n            \"id\": 3,\n            \"author\": 2,\n            \"content\": \"Tercer post\",\n            \"created_at\": \"2024-08-18T00:00:00Z\"\n        }\n    ]\n}"
+							"body": "{\n    \"count\": 3,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 3,\n            \"author\": 1,\n            \"author_username\": \"gabo\",\n            \"content\": \"post3\",\n            \"created_at\": \"2024-09-18T18:22:43.451524Z\"\n        },\n        {\n            \"id\": 2,\n            \"author\": 1,\n            \"author_username\": \"gabo\",\n            \"content\": \"post2\",\n            \"created_at\": \"2024-09-18T18:22:40.756786Z\"\n        },\n        {\n            \"id\": 1,\n            \"author\": 1,\n            \"author_username\": \"gabo\",\n            \"content\": \"post\",\n            \"created_at\": \"2024-09-18T18:22:34.362200Z\"\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -968,61 +950,6 @@
 						"url": "http://127.0.0.1:8000/api/posts/1/"
 					},
 					"response": [
-						{
-							"name": "Posts by id 200",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": "http://127.0.0.1:8000/api/posts/1/"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Wed, 18 Sep 2024 17:31:43 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "WSGIServer/0.2 CPython/3.10.12"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Vary",
-									"value": "Accept"
-								},
-								{
-									"key": "Allow",
-									"value": "OPTIONS, GET"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Length",
-									"value": "651"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"post\": {\n        \"id\": 1,\n        \"author\": 1,\n        \"content\": \"Primer post\",\n        \"created_at\": \"2024-09-18T13:20:47.331574Z\"\n    },\n    \"comments\": [\n        {\n            \"id\": 12,\n            \"author\": 1,\n            \"post\": 1,\n            \"content\": \"comentario\",\n            \"created_at\": \"2024-09-18T13:52:45.565607Z\"\n        },\n        {\n            \"id\": 11,\n            \"author\": 1,\n            \"post\": 1,\n            \"content\": \"comentario\",\n            \"created_at\": \"2024-09-18T13:52:44.906422Z\"\n        },\n        {\n            \"id\": 10,\n            \"author\": 1,\n            \"post\": 1,\n            \"content\": \"comentario\",\n            \"created_at\": \"2024-09-18T13:52:44.155395Z\"\n        }\n    ],\n    \"author\": {\n        \"id\": 1,\n        \"username\": \"mari\",\n        \"email\": \"mari@gmail.com\",\n        \"name\": \"Maria\",\n        \"lastname\": \"Castro\",\n        \"comments_count\": 9,\n        \"posts_count\": 3,\n        \"followers_count\": 0,\n        \"following_count\": 2,\n        \"following\": [\n            {\n                \"id\": 2,\n                \"username\": \"gabo\"\n            },\n            {\n                \"id\": 3,\n                \"username\": \"gabo1\"\n            }\n        ],\n        \"followers\": []\n    }\n}"
-						},
 						{
 							"name": "Posts by id 404",
 							"originalRequest": {
@@ -1077,6 +1004,61 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"detail\": \"No Post matches the given query.\"\n}"
+						},
+						{
+							"name": "Posts by id 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/posts/1/"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 19 Sep 2024 11:25:51 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "492"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"author\": 1,\n    \"author_username\": \"gabo\",\n    \"content\": \"post\",\n    \"created_at\": \"2024-09-18T18:22:34.362200Z\",\n    \"comments\": [\n        {\n            \"id\": 6,\n            \"author\": 1,\n            \"author_username\": \"gabo\",\n            \"post\": 1,\n            \"content\": \"comentar22222io\",\n            \"created_at\": \"2024-09-18T18:23:38.212097Z\"\n        },\n        {\n            \"id\": 5,\n            \"author\": 1,\n            \"author_username\": \"gabo\",\n            \"post\": 1,\n            \"content\": \"comentar22222io\",\n            \"created_at\": \"2024-09-18T18:23:37.625886Z\"\n        },\n        {\n            \"id\": 4,\n            \"author\": 1,\n            \"author_username\": \"gabo\",\n            \"post\": 1,\n            \"content\": \"comentar22222io\",\n            \"created_at\": \"2024-09-18T18:23:36.984108Z\"\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -1418,83 +1400,10 @@
 					},
 					"response": [
 						{
-							"name": "Comments by posts id 200",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "http://127.0.0.1:8000/api/posts/1/comments/"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Wed, 18 Sep 2024 17:35:03 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "WSGIServer/0.2 CPython/3.10.12"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Vary",
-									"value": "Accept"
-								},
-								{
-									"key": "Allow",
-									"value": "OPTIONS, POST, GET"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Length",
-									"value": "1276"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"id\": 13,\n        \"author\": 1,\n        \"post\": 1,\n        \"content\": \"comentario\",\n        \"created_at\": \"2024-09-18T17:33:56.496081Z\"\n    },\n    {\n        \"id\": 12,\n        \"author\": 1,\n        \"post\": 1,\n        \"content\": \"comentario\",\n        \"created_at\": \"2024-09-18T13:52:45.565607Z\"\n    },\n    {\n        \"id\": 11,\n        \"author\": 1,\n        \"post\": 1,\n        \"content\": \"comentario\",\n        \"created_at\": \"2024-09-18T13:52:44.906422Z\"\n    },\n    {\n        \"id\": 10,\n        \"author\": 1,\n        \"post\": 1,\n        \"content\": \"comentario\",\n        \"created_at\": \"2024-09-18T13:52:44.155395Z\"\n    },\n    {\n        \"id\": 9,\n        \"author\": 1,\n        \"post\": 1,\n        \"content\": \"comentario\",\n        \"created_at\": \"2024-09-18T13:52:42.898581Z\"\n    },\n    {\n        \"id\": 8,\n        \"author\": 1,\n        \"post\": 1,\n        \"content\": \"comentario\",\n        \"created_at\": \"2024-09-18T13:52:42.165466Z\"\n    },\n    {\n        \"id\": 7,\n        \"author\": 1,\n        \"post\": 1,\n        \"content\": \"comentario\",\n        \"created_at\": \"2024-09-18T13:52:35.820035Z\"\n    },\n    {\n        \"id\": 6,\n        \"author\": 1,\n        \"post\": 1,\n        \"content\": \"comentario\",\n        \"created_at\": \"2024-09-18T13:52:31.533356Z\"\n    },\n    {\n        \"id\": 5,\n        \"author\": 2,\n        \"post\": 1,\n        \"content\": \"Quinto comentario\",\n        \"created_at\": \"2024-09-18T13:39:06.905339Z\"\n    },\n    {\n        \"id\": 4,\n        \"author\": 2,\n        \"post\": 1,\n        \"content\": \"Cuarto comentario\",\n        \"created_at\": \"2024-09-18T13:39:03.104863Z\"\n    },\n    {\n        \"id\": 3,\n        \"author\": 2,\n        \"post\": 1,\n        \"content\": \"Tercer comentario\",\n        \"created_at\": \"2024-09-18T13:37:01.509483Z\"\n    },\n    {\n        \"id\": 2,\n        \"author\": 1,\n        \"post\": 1,\n        \"content\": \"Segundo comentario\",\n        \"created_at\": \"2024-09-18T13:31:26.163161Z\"\n    },\n    {\n        \"id\": 1,\n        \"author\": 1,\n        \"post\": 1,\n        \"content\": \"Primer comentario\",\n        \"created_at\": \"2024-09-18T13:31:13.633068Z\"\n    }\n]"
-						},
-						{
 							"name": "Comments by posts id 404",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": "http://127.0.0.1:8000/api/posts/100/comments/"
 							},
 							"status": "Not Found",
@@ -1544,6 +1453,70 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"detail\": \"No Post matches the given query.\"\n}"
+						},
+						{
+							"name": "Comments by posts id 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:8000/api/posts/1/comments/"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 19 Sep 2024 11:13:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, GET, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "746"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 6,\n        \"author\": 1,\n        \"author_username\": \"gabo\",\n        \"post\": 1,\n        \"content\": \"comentar22222io\",\n        \"created_at\": \"2024-09-18T18:23:38.212097Z\"\n    },\n    {\n        \"id\": 5,\n        \"author\": 1,\n        \"author_username\": \"gabo\",\n        \"post\": 1,\n        \"content\": \"comentar22222io\",\n        \"created_at\": \"2024-09-18T18:23:37.625886Z\"\n    },\n    {\n        \"id\": 4,\n        \"author\": 1,\n        \"author_username\": \"gabo\",\n        \"post\": 1,\n        \"content\": \"comentar22222io\",\n        \"created_at\": \"2024-09-18T18:23:36.984108Z\"\n    },\n    {\n        \"id\": 3,\n        \"author\": 1,\n        \"author_username\": \"gabo\",\n        \"post\": 1,\n        \"content\": \"comentar22222io\",\n        \"created_at\": \"2024-09-18T18:23:36.165437Z\"\n    },\n    {\n        \"id\": 2,\n        \"author\": 1,\n        \"author_username\": \"gabo\",\n        \"post\": 1,\n        \"content\": \"comentar22222io\",\n        \"created_at\": \"2024-09-18T18:23:23.175798Z\"\n    },\n    {\n        \"id\": 1,\n        \"author\": 1,\n        \"author_username\": \"gabo\",\n        \"post\": 1,\n        \"content\": \"comentario\",\n        \"created_at\": \"2024-09-18T18:23:19.179343Z\"\n    }\n]"
 						}
 					]
 				}

@@ -44,11 +44,7 @@ def create_user(request):
 @api_view(["GET"])
 def user_detail(request, user_id):
     try:
-        user = (
-            User.objects.select_related()
-            .prefetch_related("following", "followers")
-            .get(pk=user_id)
-        )
+        user = User.objects.prefetch_related("following", "followers").get(pk=user_id)
     except User.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 

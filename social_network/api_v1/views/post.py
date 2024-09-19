@@ -5,10 +5,13 @@ from ..models.post import Post
 from ..models.user import User
 from ..models.comment import Comment
 from ..serializers.post import PostSerializer
+from ..serializers.post_detail import PostDetailSerializer
 from ..serializers.comment import CommentSerializer
 from ..serializers.user_detail import UserDetailSerializer
 from ..utils.custom_paginator import CustomPageNumberPagination
 from django.shortcuts import get_object_or_404
+from django.db.models import Prefetch
+from datetime import datetime, timedelta
 
 
 @api_view(["GET", "POST"])
@@ -25,6 +28,7 @@ def posts(request):
         if from_date:
             posts = posts.filter(created_at__gte=from_date)
         if to_date:
+            to_date = datetime.strptime(to_date, "%Y-%m-%d") + timedelta(days=1) - timedelta(seconds=1)
             posts = posts.filter(created_at__lte=to_date)
 
         paginator = CustomPageNumberPagination()
@@ -62,15 +66,17 @@ def comments(request, post_id):
 
 @api_view(["GET"])
 def post_detail(request, post_id):
-    post = get_object_or_404(Post.objects.select_related("author"), pk=post_id)
-    post_serializer = PostSerializer(post)
-    user_serializer = UserDetailSerializer(post.author)
-    last_three_comments = Comment.objects.filter(post=post).order_by("-created_at")[:3]
-    comment_serializer = CommentSerializer(last_three_comments, many=True)
-    return Response(
-        {
-            "post": post_serializer.data,
-            "comments": comment_serializer.data,
-            "author": user_serializer.data,
-        }
+    post = get_object_or_404(
+        Post.objects.select_related("author").prefetch_related(
+            Prefetch(
+                "comments",
+                queryset=Comment.objects.select_related("author").order_by(
+                    "-created_at"
+                )[:3],
+                to_attr="limited_comments",
+            )
+        ),
+        pk=post_id,
     )
+    serializer = PostDetailSerializer(post)
+    return Response(serializer.data)

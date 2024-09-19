@@ -82,8 +82,8 @@ class PostTests(APITestCase):
     def test_get_post_detail(self):
         response = self.client.get(self.post_detail_url(self.post1.id))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["post"]["content"], "Post 1 by user1")
-        self.assertEqual(response.data["author"]["username"], self.user1.username)
+        self.assertEqual(response.data["content"], "Post 1 by user1")
+        self.assertEqual(response.data["author_username"], self.user1.username)
         comments = response.data["comments"]
         self.assertEqual(len(comments), 3)
         self.assertEqual(comments[0]["content"], "Comment 4 on post 1")
@@ -96,7 +96,7 @@ class PostTests(APITestCase):
         )
         response = self.client.get(self.post_detail_url(post_without_comments.id))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["post"]["content"], "Post without comments")
-        self.assertEqual(response.data["author"]["username"], self.user1.username)
+        self.assertEqual(response.data["content"], "Post without comments")
+        self.assertEqual(response.data["author_username"], self.user1.username)
         self.assertEqual(response.data["comments"], [])
         post_without_comments.delete()
